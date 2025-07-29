@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import typing
 """
-Module:
+Module: all Python modules
 typing: a module used to define arguments types for type-annotated functions.
 """
 
