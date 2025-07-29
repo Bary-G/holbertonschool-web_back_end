@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import typing
 """
 Module: A file that runs functions under Python3.
 typing: a module used to define arguments types for type-annotated functions.
 """
+import typing
 
 
 def sum_list(input_list: typing.List[float]) -> float:
