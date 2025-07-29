@@ -2,7 +2,7 @@
 import typing
 """
 Module:
-typing: a module used to define arguments types
+typing: a module used to define arguments types for type-annotated functions.
 """
 
 
