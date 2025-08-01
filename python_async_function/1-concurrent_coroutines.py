@@ -4,11 +4,10 @@ Module: A file that runs functions under Python3.
 asyncio: A module that runs functions under Python3.
 random: A module that runs functions under Python3.
 typing: A module that runs functions under Python3.
-List: A module that runs functions under Python3.
 """
 import asyncio
 import random
-from typing import List
+import typing
 
 
 async def wait_random(max_delay: int = 10) -> float:
@@ -20,7 +19,7 @@ async def wait_random(max_delay: int = 10) -> float:
     await asyncio.sleep(delay)
     return delay
 
-async def wait_n(n: int, max_delay: int) -> List[float]:
+async def wait_n(n: int, max_delay: int) -> typing.List[float]:
     """An async routine called wait_n that takes in 2 int arguments: n and
     max_delay. wait_n should return the list of all the delays (float values).
     The list of the delays should be in ascending order without using sort()
