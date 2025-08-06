@@ -4,9 +4,11 @@ Module: A file that runs functions under Python3.
 asyncio: A module that runs functions under Python3.
 random: A module that runs functions under Python3.
 async_comprehension: A module that runs functions under Python3.
+time: A module that runs functions under Python3.
 """
 import asyncio
 import random
+import time
 
 async def async_generator():
     """A coroutine that loop 10 times, each time asynchronously wait 1 second,
@@ -21,4 +23,8 @@ async def async_comprehension():
     return [i async for i in async_generator()]
 
 async def measure_runtime():
-    return await asyncio.gather(async_comprehension())
+    start_time = time.time()
+    await asyncio.gather(async_comprehension())
+    end_time = time.time()
+    total_runtime = end_time - start_time
+    return total_runtime
