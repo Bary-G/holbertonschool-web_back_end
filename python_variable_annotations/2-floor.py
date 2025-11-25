@@ -2,6 +2,7 @@
 """
 Module: A type-annotated function floor which takes a float n
 as argument and returns the floor of the float
+math: A math operations module
 """
 import math
 
