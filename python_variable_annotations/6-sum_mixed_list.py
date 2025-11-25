@@ -6,6 +6,7 @@ typing: This module is used to annotate in a list
 """
 import typing
 
+
 def sum_mixed_list(mxd_lst: typing.List[float]) -> float:
     """
     A type-annotated function sum_mixed_list which takes a list
