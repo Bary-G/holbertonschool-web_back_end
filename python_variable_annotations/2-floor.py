@@ -6,6 +6,7 @@ math: A math operations module
 """
 import math
 
+
 def floor(n: float) -> int:
     """
     A type-annotated function floor which takes a float n
