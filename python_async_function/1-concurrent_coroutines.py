@@ -2,7 +2,6 @@
 """
 Module: Returns the list of all the delays (float values)
 """
-import random
 import asyncio
 wait_random = __import__('0-basic_async_syntax').wait_random
 
