@@ -3,10 +3,10 @@
 Module: A type-annotated function element_length that takes an iterable
 sequence as argument and returns a tuple
 """
-import typing
+from typing import Iterable, Sequence, List, Tuple
 
 
-def element_length(lst: typing.Iterable[typing.Sequence]) -> typing.List[typing.Tuple[typing.Sequence, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     A type-annotated function element_length that takes an iterable
     sequence as argument and returns a tuple
