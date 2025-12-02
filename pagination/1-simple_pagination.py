@@ -4,7 +4,7 @@ Module file with function
 """
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
 class Server:
@@ -36,7 +36,7 @@ class Server:
         return dataset[start:end]
 
 
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Takes two integer arguments page and page_size
     and return a tuple of size two containing a
