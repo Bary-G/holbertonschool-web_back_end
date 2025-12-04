@@ -1,2 +1,2 @@
 // Filter all documents in a collection
-db.school.countDocuments({})
+db.school.count({})
