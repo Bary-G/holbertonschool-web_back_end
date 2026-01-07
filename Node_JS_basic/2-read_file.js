@@ -1,0 +1,30 @@
+const fs = require('fs');
+
+function countStudents(cheminFichier) {
+  const contenu = fs.readFileSync(cheminFichier, 'utf8');
+  const lignes = contenu.split('\n').filter(l => l.trim() !== '');
+  const enTêtes = lignes[0].split(',');
+
+  const resultat = lignes.slice(1).map(ligne => {
+    const valeurs = ligne.split(',');
+    return enTêtes.reduce((obj, clé, i) => {
+      obj[clé] = valeurs[i];
+      return obj;
+    }, {});
+  });
+
+  const valeursColonne = resultat.map(r => r["firstname"]).filter(v => v);
+  console.log(`Number of students: ${valeursColonne.length}`);
+
+  const correspondancesCS = resultat.filter(r => r["field"] === "CS");
+  console.log(
+    `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r["firstname"]).join(', ')}`
+  );
+
+  const correspondancesSWE = resultat.filter(r => r["field"] === "SWE");
+  console.log(
+    `Number of students in SWE: ${correspondancesSWE.length}. List: ${correspondancesSWE.map(r => r["firstname"]).join(', ')}`
+  );
+}
+
+module.exports = countStudents;
