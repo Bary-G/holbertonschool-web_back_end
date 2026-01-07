@@ -3,10 +3,8 @@ const path = require('path');
 
 async function countStudents(cheminFichier) {
   try {
-    // Vérifie si le fichier est accessible
     await fs.access(cheminFichier);
 
-    // Lecture asynchrone du fichier
     const contenu = await fs.readFile(cheminFichier, 'utf8');
     const lignes = contenu.split('\n').filter(l => l.trim() !== '');
     const enTêtes = lignes[0].split(',');
