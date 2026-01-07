@@ -1,6 +1,10 @@
 const fs = require('fs');
+const path = require('path');
 
 function countStudents(cheminFichier) {
+  if (!fs.existsSync(cheminFichier)) {
+    throw new Error(`Cannot load the database`);
+  }
   const contenu = fs.readFileSync(cheminFichier, 'utf8');
   const lignes = contenu.split('\n').filter(l => l.trim() !== '');
   const enTêtes = lignes[0].split(',');
