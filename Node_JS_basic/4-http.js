@@ -1,11 +1,10 @@
 const http = require('http');
-const app = "Hello Holberton School!"
 
-const server = http.createServer((req, res) => {
+const app = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end(app);
+  res.end("Hello Holberton School!");
 });
 
-server.listen(1245, () => {
+app.listen(1245, () => {
   
 });
