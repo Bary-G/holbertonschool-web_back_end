@@ -1,6 +1,8 @@
 const express = require('express');
+
 const app = express();
 
+// eslint-disable-next-line no-unused-vars
 app.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello Holberton School!');
