@@ -1,33 +1,37 @@
 const fs = require('fs').promises;
 
-async function countStudents(cheminFichier) {
+async function countStudents(filePath) {
   try {
-    await fs.access(cheminFichier);
+    await fs.access(filePath);
 
-    const contenu = await fs.readFile(cheminFichier, 'utf8');
-    const lignes = contenu.split('\n').filter(l => l.trim() !== '');
-    const enTêtes = lignes[0].split(',');
+    const content = await fs.readFile(filePath, 'utf8');
+    const lines = content.split('\n').filter((line) => line.trim() !== '');
+    const headers = lines[0].split(',');
 
-    const resultat = lignes.slice(1).map(ligne => {
-      const valeurs = ligne.split(',');
-      return enTêtes.reduce((obj, clé, i) => {
-        obj[clé] = valeurs[i];
-        return obj;
+    const records = lines.slice(1).map((line) => {
+      const values = line.split(',');
+      return headers.reduce((obj, key, i) => {
+        const newObj = obj;
+        newObj[key] = values[i];
+        return newObj;
       }, {});
     });
 
-    const valeursColonne = resultat.map(r => r['firstname']).filter(v => v);
-    const correspondancesCS = resultat.filter(r => r['field'] === 'CS');
-    const correspondancesSWE = resultat.filter(r => r['field'] === 'SWE');
+    const students = records.map((r) => r.firstname).filter(Boolean);
+    const csStudents = records.filter((r) => r.field === 'CS');
+    const sweStudents = records.filter((r) => r.field === 'SWE');
 
     const output = [
-      `Number of students: ${valeursColonne.length}`,
-      `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r['firstname']).join(', ')}`,
-      `Number of students in SWE: ${correspondancesSWE.length}. List: ${correspondancesSWE.map(r => r['firstname']).join(', ')}`
+      `Number of students: ${students.length}`,
+      `Number of students in CS: ${csStudents.length}. List: ${csStudents.map((r) => r.firstname).join(', ')}`,
+      `Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.map((r) => r.firstname).join(', ')}`,
     ].join('\n');
-    console.log(output)
+
+    // eslint-disable-next-line no-console
+    console.log(output);
+
     return output;
-  } catch (err) {
+  } catch (error) {
     throw new Error('Cannot load the database');
   }
 }
