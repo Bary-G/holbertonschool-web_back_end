@@ -18,17 +18,16 @@ async function countStudents(cheminFichier) {
     });
 
     const valeursColonne = resultat.map(r => r["firstname"]).filter(v => v);
-    console.log(`Number of students: ${valeursColonne.length}`);
-
     const correspondancesCS = resultat.filter(r => r["field"] === "CS");
-    console.log(
-      `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r["firstname"]).join(', ')}`
-    );
-
     const correspondancesSWE = resultat.filter(r => r["field"] === "SWE");
-    console.log(
+
+    const output = [
+      `Number of students: ${valeursColonne.length}`,
+      `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r["firstname"]).join(', ')}`,
       `Number of students in SWE: ${correspondancesSWE.length}. List: ${correspondancesSWE.map(r => r["firstname"]).join(', ')}`
-    );
+    ].join('\n');
+    console.log(output)
+    return output;
   } catch (err) {
     throw new Error('Cannot load the database');
   }
