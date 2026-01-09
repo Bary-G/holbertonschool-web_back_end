@@ -27,7 +27,6 @@ async function countStudents(filePath) {
       `Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.map((r) => r.firstname).join(', ')}`,
     ].join('\n');
 
-    // eslint-disable-next-line no-console
     console.log(output);
 
     return output;
