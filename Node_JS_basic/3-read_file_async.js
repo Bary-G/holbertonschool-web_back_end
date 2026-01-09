@@ -1,5 +1,4 @@
 const fs = require('fs').promises;
-const path = require('path');
 
 async function countStudents(cheminFichier) {
   try {
@@ -17,14 +16,14 @@ async function countStudents(cheminFichier) {
       }, {});
     });
 
-    const valeursColonne = resultat.map(r => r["firstname"]).filter(v => v);
-    const correspondancesCS = resultat.filter(r => r["field"] === "CS");
-    const correspondancesSWE = resultat.filter(r => r["field"] === "SWE");
+    const valeursColonne = resultat.map(r => r['firstname']).filter(v => v);
+    const correspondancesCS = resultat.filter(r => r['field'] === 'CS');
+    const correspondancesSWE = resultat.filter(r => r['field'] === 'SWE');
 
     const output = [
       `Number of students: ${valeursColonne.length}`,
-      `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r["firstname"]).join(', ')}`,
-      `Number of students in SWE: ${correspondancesSWE.length}. List: ${correspondancesSWE.map(r => r["firstname"]).join(', ')}`
+      `Number of students in CS: ${correspondancesCS.length}. List: ${correspondancesCS.map(r => r['firstname']).join(', ')}`,
+      `Number of students in SWE: ${correspondancesSWE.length}. List: ${correspondancesSWE.map(r => r['firstname']).join(', ')}`
     ].join('\n');
     console.log(output)
     return output;
